@@ -1,25 +1,34 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Asistencia DUOC - Ingreso</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-  <div class="centrado-vertical">
-    <div class="marco">
-      <ion-item>
-        <ion-input [(ngModel)]="correo" type="text" label="Correo" labelPlacement="floating"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input [(ngModel)]="password" type="password" label="Contraseña" labelPlacement="floating"></ion-input>
-      </ion-item>
-      <div class="alinear-centro">
-        <ion-button (click)="ingresar()">
-          Ingresar
-        </ion-button>
-      </div>
-    </div>
+<ion-content class="login-container">
+  <div class="duoc-logo-container">
+    <img src="../../../assets/icon/DuocLogo.png" alt="Duoc logo" class="duoc-logo">
   </div>
-
+  <!-- Agrega el mensaje aquí -->
+  <p class="mensaje">Sistema de Asistencia Duoc UC</p>
+  <p class="Bienvenido">¡Bienvenido!</p>
+  <img src="../../../assets/icon/Palacio_Duoc.jpg" alt="Palacio Duoc" class="fullscreen-image">
+  <div class="login-form">
+    <ion-card>
+      <ion-card-header>
+        Iniciar Sesión
+      </ion-card-header>
+      
+      <ion-card-content>
+        <ion-item>
+          <ion-input name="correo" label="Correo" labelPlacement="floating" type="text" placeholder="Ingrese su correo" [(ngModel)]="correo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input name="password" label="Contraseña" labelPlacement="floating" type="password" placeholder="Ingrese su contraseña" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button shape="block" (click)="ingresar()">Ingresar</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-label class="recuperar-contrasena">
+          <br>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
 </ion-content>
