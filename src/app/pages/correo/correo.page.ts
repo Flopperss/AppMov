@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Usuario } from 'src/app/model/usuario';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-correo',
@@ -11,10 +14,18 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class CorreoPage implements OnInit {
-
-  constructor() { }
+  correo = 'atorres@duocuc.cl';
+  usuario: Usuario; // Declara una variable para la instancia de Usuario
+  
+  constructor(private authService: AuthService, private router: Router) {
+    this.usuario = new Usuario();
+  }
 
   ngOnInit() {
   }
 
+  ingresar() {
+    this.authService.recuperar(this.correo);
+  }
 }
+

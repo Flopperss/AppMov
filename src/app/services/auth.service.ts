@@ -76,4 +76,26 @@ export class AuthService {
     });
   }
 
+
+
+  async recuperar(correo: string) {
+    await this.storage.get(this.keyUsuario).then( async (usuarioAutenticado) => {
+      if (usuarioAutenticado) {
+        this.usuarioAutenticado.next(usuarioAutenticado);
+        this.primerInicioSesion.next(false);
+        this.router.navigate(['correo']);
+      } else {
+        await this.bd.leerUsuario(correo).then(async (usuario: Usuario | undefined) => {
+          if (usuario) {
+            this.router.navigate(['pregunta']);
+          } else {
+            showToast(`El correo o la password son incorrectos`);
+          }
+        })
+      }
+    })
+  }
+  
 }
+
+
