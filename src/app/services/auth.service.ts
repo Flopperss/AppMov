@@ -89,7 +89,7 @@ export class AuthService {
           if (usuario) {
             this.router.navigate(['pregunta']);
           } else {
-            showToast(`El correo o la password son incorrectos`);
+            this.router.navigate(['incorrecto']);
           }
         })
       }
