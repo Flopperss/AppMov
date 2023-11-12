@@ -86,3 +86,10 @@
   margin: -10px auto; /* Centra verticalmente y agrega espacio en la parte superior e inferior */
   max-width: 29%; /* Limita el ancho al 80% del contenedor padre */
 }
+.recuperar-contrasena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

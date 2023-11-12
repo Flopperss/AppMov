@@ -46,4 +46,7 @@ export class CorrectoPage implements OnInit {
     });
   }
 
+  volver() {
+    this.authService.volver();
+  }
 }

@@ -63,4 +63,8 @@ export class PreguntaPage implements OnInit {
       this.router.navigate(['/incorrecto']);
     }
   }
+
+  volver() {
+    this.authService.volver();
+  }
 }
