@@ -17,7 +17,7 @@
           <p>Paso 2: Responde la pregunta secreta</p>
         </ion-card-content>
         <ion-card-content class="nombre"> 
-        <p>{{ usuario.nombre }} {{ usuario.apellido }}</p>
+        <h1>{{ usuario.nombre }} {{ usuario.apellido }}</h1>
         </ion-card-content>
         <ion-item>
           <ion-input [(ngModel)]="respuestaUsuario" name="Pregunta" label={{usuario.preguntaSecreta}} labelPlacement="floating" type="text" placeholder="Escriba aqui su respuesta" ></ion-input>

@@ -5,6 +5,10 @@ import { IonicModule } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
 import { Router, NavigationExtras } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { SqliteService } from 'src/app/services/sqlite.service';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-correcto',
@@ -14,25 +18,32 @@ import { ActivatedRoute } from '@angular/router';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class CorrectoPage implements OnInit {
-  public usuario: Usuario;
+  
+  usuario = new Usuario();
+  plataforma = 'web';
   constructor(private activerouter: ActivatedRoute,
+    private authService: AuthService,
+    private sqliteService: SqliteService,
     private router: Router) { 
-    this.usuario = new Usuario('','','','','','','');
-
-    this.activerouter.queryParamMap.subscribe(params => {
-      const nav = this.router.getCurrentNavigation();
-      if (nav) {
-        if (nav.extras.state) {
-          this.usuario = nav.extras.state['usuario'];
-          if (this.usuario.respuestaSecreta !== undefined) {
-            this.usuario.respuestaSecreta = this.usuario.respuestaSecreta;
-          }
-        }
-      }
-    });
+    
+    // this.activerouter.queryParamMap.subscribe(params => {
+    //   const nav = this.router.getCurrentNavigation();
+    //   if (nav) {
+    //     if (nav.extras.state) {
+    //       this.usuario = nav.extras.state['usuario'];
+    //       if (this.usuario.respuestaSecreta !== undefined) {
+    //         this.usuario.respuestaSecreta = this.usuario.respuestaSecreta;
+    //       }
+    //     }
+    //   }
+    // });
   }
 
   ngOnInit() {
+    this.plataforma = this.sqliteService.platform;
+    this.authService.usuarioAutenticado.subscribe((usuario) => {
+      this.usuario = usuario? usuario : new Usuario();
+    });
   }
 
 }

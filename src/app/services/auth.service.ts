@@ -87,6 +87,8 @@ export class AuthService {
       } else {
         await this.bd.leerUsuario(correo).then(async (usuario: Usuario | undefined) => {
           if (usuario) {
+            this.guardarUsuarioAutenticado(usuario);
+            this.primerInicioSesion.next(true);
             this.router.navigate(['pregunta']);
           } else {
             this.router.navigate(['incorrecto']);

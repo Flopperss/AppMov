@@ -5,6 +5,9 @@ import { IonicModule } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
+import { AuthService } from 'src/app/services/auth.service';
+import { SqliteService } from 'src/app/services/sqlite.service';
+
 
 @Component({
   selector: 'app-pregunta',
@@ -15,31 +18,36 @@ import { Usuario } from 'src/app/model/usuario';
 })
 export class PreguntaPage implements OnInit {
 
-  public usuario: Usuario;
   public respuestaUsuario: string = '';
-  
+  usuario = new Usuario();
+  plataforma = 'web';
+
   constructor(
     private activatedrouter: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private sqliteService: SqliteService,
   ) {
-    this.usuario = new Usuario('','','','','','','');
-
-    this.activatedrouter.queryParamMap.subscribe(params => {
-      const nav = this.router.getCurrentNavigation();
-      if (nav) {
-        if (nav.extras.state) {
-          this.usuario = nav.extras.state['usuario'];
-          if (this.usuario.respuestaSecreta !== undefined) {
-            this.usuario.respuestaSecreta = this.usuario.respuestaSecreta;
-          }
-        }
-      }
-    });
+    // this.activatedrouter.queryParamMap.subscribe(params => {
+    //   const nav = this.router.getCurrentNavigation();
+    //   if (nav) {
+    //     if (nav.extras.state) {
+    //       this.usuario = nav.extras.state['usuario'];
+    //       if (this.usuario.respuestaSecreta !== undefined) {
+    //         this.usuario.respuestaSecreta = this.usuario.respuestaSecreta;
+    //       }
+    //     }
+    //   }
+    // });
   }
 
   ngOnInit() {
+    this.plataforma = this.sqliteService.platform;
+    this.authService.usuarioAutenticado.subscribe((usuario) => {
+      this.usuario = usuario? usuario : new Usuario();
+    });
   }
-
+  
   redirigir() {
     if (this.usuario.respuestaSecreta === this.respuestaUsuario) {
       // NavigationExtras para enviar datos a la página correcto
