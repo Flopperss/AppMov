@@ -81,14 +81,11 @@ export class AuthService {
   async recuperar(correo: string) {
     await this.storage.get(this.keyUsuario).then( async (usuarioAutenticado) => {
       if (usuarioAutenticado) {
-        this.usuarioAutenticado.next(usuarioAutenticado);
-        this.primerInicioSesion.next(false);
         this.router.navigate(['correo']);
       } else {
         await this.bd.leerUsuario(correo).then(async (usuario: Usuario | undefined) => {
           if (usuario) {
             this.guardarUsuarioAutenticado(usuario);
-            this.primerInicioSesion.next(true);
             this.router.navigate(['pregunta']);
           } else {
             this.router.navigate(['incorrecto']);
@@ -96,6 +93,15 @@ export class AuthService {
         })
       }
     })
+  }
+
+  async volver() {
+    this.leerUsuarioAutenticado().then((usuario) => {
+      if (usuario) {
+        this.eliminarUsuarioAutenticado(usuario);
+      }
+      this.router.navigate(['ingreso']);
+    });
   }
   
   async volver() {

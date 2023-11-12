@@ -29,7 +29,7 @@ export class CorreoPage implements OnInit {
   }
   iniciarSesion() {
     // Utiliza el servicio de enrutamiento para redirigir a otra página
-    this.router.navigate(['ingreso']);
+    this.router.navigate(['/ingreso']);
   }
 }
 
