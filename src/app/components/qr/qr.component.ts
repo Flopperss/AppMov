@@ -13,6 +13,8 @@ import { log, showAlertDUOC, showAlertYesNoDUOC } from 'src/app/tools/message-ro
 import jsQR, { QRCode } from 'jsqr';
 import { BarcodeFormat, BarcodeScanner, ScanResult } from '@capacitor-mlkit/barcode-scanning';
 import { MessageEnum } from 'src/app/tools/message-enum';
+import { fadeInAnimation } from 'src/app/animations';
+import { scaleTitle } from 'src/app/animations';
 
 
 @Component({
@@ -20,7 +22,8 @@ import { MessageEnum } from 'src/app/tools/message-enum';
   templateUrl: './qr.component.html',
   styleUrls: ['./qr.component.scss'],
   imports: [IonicModule, CommonModule, FormsModule],
-  standalone: true
+  standalone: true,
+  animations: [fadeInAnimation,scaleTitle]
 })
 export class QrComponent  implements OnInit {
 

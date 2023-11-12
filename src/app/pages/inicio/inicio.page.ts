@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -9,6 +9,9 @@ import { MisdatosComponent } from 'src/app/components/misdatos/misdatos.componen
 import { AuthService } from 'src/app/services/auth.service';
 import { DataBaseService } from 'src/app/services/data-base.service';
 import { ApiClientService } from 'src/app/services/api-client.service';
+import { fadeInAnimation } from 'src/app/animations';
+import { scaleTitle } from 'src/app/animations';
+import { AnimationController} from '@ionic/angular';
 
 @Component({
   selector: 'app-inicio',
@@ -16,16 +19,19 @@ import { ApiClientService } from 'src/app/services/api-client.service';
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule,
-  QrComponent, MiclaseComponent, ForoComponent, MisdatosComponent]
+  QrComponent, MiclaseComponent, ForoComponent, MisdatosComponent],
+  animations: [fadeInAnimation,scaleTitle]
 })
-export class InicioPage implements OnInit {
+export class InicioPage implements OnInit, AfterViewInit {
+  @ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
 
   componente_actual = 'qr';
 
   constructor(
     private authService: AuthService, 
     private bd: DataBaseService,
-    private api: ApiClientService) { }
+    private api: ApiClientService,
+    private animationController: AnimationController) { }
 
   ngOnInit() {
     this.authService.primerInicioSesion.subscribe(esPrimerInicioSesion => {
@@ -44,4 +50,16 @@ export class InicioPage implements OnInit {
     this.authService.logout();
   }
 
+  public ngAfterViewInit(): void {
+    if (this.itemTitulo) {
+      const animation = this.animationController
+        .create()
+        .addElement(this.itemTitulo.nativeElement)
+        .iterations(Infinity)
+        .duration(6000)
+        .fromTo('transform', 'translate(0%)', 'translate(100%)')
+        .fromTo('opacity', 0.2, 1);
+      animation.play();
+    }
+  }
 }

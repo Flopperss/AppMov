@@ -104,14 +104,6 @@ export class AuthService {
     });
   }
   
-  async volver() {
-    this.leerUsuarioAutenticado().then((usuario) => {
-      if (usuario) {
-        this.eliminarUsuarioAutenticado(usuario);
-      }
-      this.router.navigate(['ingreso']);
-    });
-  }
 
 }
 

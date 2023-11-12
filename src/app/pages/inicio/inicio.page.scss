@@ -1,0 +1,70 @@
+.page-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  width: 180px; /* Ajusta el ancho según tus necesidades */
+  height: 50px; /* Ajusta la altura según tus necesidades */
+  background-color: rgb(255, 255, 255); /* Color del cuadrado negro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px; /* Ajusta el radio de borde si es necesario */
+}
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.asistencia-label {
+  color: #ffffff;
+  font-size: 24px; /* Tamaño de fuente personalizado */
+  font-weight: bold; /* Peso de fuente personalizado */
+  margin-top: 10px; /* Margen superior personalizado */
+}
+
+.welcome-message {
+  margin-top: 20px;
+}
+
+.user-info {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.logout-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.navbar-start {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Espaciado entre los enlaces, ajusta según tus necesidades */
+  color: white; /* Color del texto, ajusta según tu diseño */
+  text-decoration: none; /* Elimina la subrayado de los enlaces */
+  margin-right: 20px; /* Espaciado entre los enlaces, ajusta según tus necesidades */
+}
+.asistencia{
+  color: rgb(0, 0, 0);
+}
+
+.fullscreen-image {
+  position: fixed; /* Fija la imagen en la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ancho completo de la pantalla */
+  height: 100%; /* Altura completa de la pantalla */
+  object-fit: cover; /* Escalar y recortar la imagen para ajustarse a la pantalla */
+  z-index: -1; /* Colocar la imagen detrás del contenido */
+}
+
+.button-label {
+  color: #ffffff;
+}
+
+
+
