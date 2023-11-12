@@ -1,0 +1,88 @@
+.page-content {
+  text-align: center;
+  padding: 20px 40px;
+}
+
+.logo-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logo {
+  max-width: 150px;
+}
+
+.message {
+  margin-top: 20px;
+}
+
+.centered-image {
+  display: block;
+  margin: 0 auto;
+  max-width:29%;
+  margin-top: 25px;
+}
+
+.login-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+.Contraseña{
+  color: red;
+  size: 50px;
+} 
+
+.fullscreen-image {
+  position: fixed; /* Fija la imagen en la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ancho completo de la pantalla */
+  height: 100%; /* Altura completa de la pantalla */
+  object-fit: cover; /* Escalar y recortar la imagen para ajustarse a la pantalla */
+  z-index: -1; /* Colocar la imagen detrás del contenido */
+}
+
+.Bienvenido {
+  text-align: center;
+  background-color: rgb(37, 29, 29);
+  color: white;
+  padding: 7px;
+  margin: 9px auto; /* Añade margen superior e inferior de 20px */
+  max-width: 29%;
+}
+
+.mensaje {
+  text-align: center; /* Centra el texto horizontalmente */
+  background-color: rgb(37, 29, 29); /* Establece el fondo en negro */
+  color: white; /* Establece el color del texto en blanco */
+  padding: 10px; /* Añade espacio interno alrededor del texto para mayor legibilidad */
+  margin: 5px auto; /* Centra verticalmente y agrega espacio en la parte superior e inferior */
+  max-width: 29%; /* Limita el ancho al 80% del contenedor padre */
+}
+.correcto{
+  text-align: center; /* Centra el texto horizontalmente */
+  background-color: rgb(37, 29, 29); /* Establece el fondo en negro */
+  color: white; /* Establece el color del texto en blanco */
+  padding: 10px; /* Añade espacio interno alrededor del texto para mayor legibilidad */
+  margin: 10px auto; /* Centra verticalmente y agrega espacio en la parte superior e inferior */
+  max-width: 29%; /* Limita el ancho al 80% del contenedor padre */
+}
+
+.password{
+  text-align: center; /* Centra el texto horizontalmente */
+  background-color: rgb(37, 29, 29); /* Establece el fondo en negro */
+  color: white; /* Establece el color del texto en blanco */
+  padding: 10px; /* AÃ±ade espacio interno alrededor del texto para mayor legibilidad */
+  margin: -30px auto; /* Centra verticalmente y agrega espacio en la parte superior e inferior */
+  max-width: 29.5%; /* Limita el ancho al 80% del contenedor padre */
+}
+
+.sesion{
+  text-align: center; /* Centra el texto horizontalmente */
+  background-color: rgb(37, 29, 29); /* Establece el fondo en negro */
+  color: white; /* Establece el color del texto en blanco */
+  padding: 10px; /* Añade espacio interno alrededor del texto para mayor legibilidad */
+  margin: -10px auto; /* Centra verticalmente y agrega espacio en la parte superior e inferior */
+  max-width: 29%; /* Limita el ancho al 80% del contenedor padre */
+}

@@ -27,5 +27,9 @@ export class CorreoPage implements OnInit {
   ingresar() {
     this.authService.recuperar(this.correo);
   }
+  iniciarSesion() {
+    // Utiliza el servicio de enrutamiento para redirigir a otra página
+    this.router.navigate(['ingreso']);
+  }
 }
 

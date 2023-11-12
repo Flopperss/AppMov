@@ -1,13 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>correcto</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="page-content">
+  <div class="logo-container">
+    <img src="../../../assets/icon/DuocLogo.png" alt="Logo" class="logo">
+    <img src="../../../assets/icon/Palacio_Duoc.jpg" alt="Palacio Duoc" class="fullscreen-image">
+  </div>
+  <div class="message">
+    <p class="correcto">¡¡¡Correcto!!!</p>
+    <p class="mensaje">Sistema de Asistencia DUOC</p>
+  </div>
+  <ion-card-content class="Contraseña"> 
+    <div class="message">
+      <p class="password">La contraseña es: {{ usuario.password }}</p>
+    </div>
+    </ion-card-content>
+  <div class="image-container">
+    <img src="../../../assets/icon/Joven_Pulgar_Arriva.jpg" alt="Imagen centrada" class="centered-image">
+  </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">correcto</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-label class="login-link">
+    <div class="message">
+      <p class="sesion"><a routerLink="/ingreso">Iniciar Sesión</a>
+  </div>
+  </ion-label>
 </ion-content>
