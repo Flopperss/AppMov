@@ -12,6 +12,7 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 import { fadeInAnimation } from 'src/app/animations';
 import { scaleTitle } from 'src/app/animations';
 import { AnimationController} from '@ionic/angular';
+import { AdminComponent } from 'src/app/components/admin/admin.component';
 
 @Component({
   selector: 'app-inicio',
@@ -19,7 +20,7 @@ import { AnimationController} from '@ionic/angular';
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule,
-  QrComponent, MiclaseComponent, ForoComponent, MisdatosComponent],
+  QrComponent, MiclaseComponent, ForoComponent, MisdatosComponent, AdminComponent],
   animations: [fadeInAnimation,scaleTitle]
 })
 export class InicioPage implements OnInit, AfterViewInit {

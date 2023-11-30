@@ -1,12 +1,15 @@
+<!-- admin.component.html -->
+
 <ion-content [fullscreen]="true">
   <img src="../../../assets/icon/Palacio_Duoc.jpg" alt="Palacio Duoc" class="fullscreen-image">
   <a #topOfPage href="#topOfPage"></a>
-  <ion-card>
-    <ion-list *ngIf="listaUsuarios && listaUsuarios.length > 0">
-      <ion-item *ngFor="let usuario of listaUsuarios">
-        <ion-label>{{ usuario.nombre }}</ion-label>
-        <p>{{ usuario.correo }}</p>
-      </ion-item>
-    </ion-list>
+
+  <ion-card *ngFor="let usuario of listaUsuarios">
+    <ion-card-content>
+      <ion-card-title>{{ usuario.nombre }}</ion-card-title>
+      <ion-card-subtitle>{{ usuario.correo }}</ion-card-subtitle>
+    </ion-card-content>
+    <ion-button color="danger" *ngIf="usuario.correo !== 'admin@duocuc.cl'" (click)="confirmarEliminacion(usuario)">
+      Eliminar
+    </ion-button>
   </ion-card>
-</ion-content>

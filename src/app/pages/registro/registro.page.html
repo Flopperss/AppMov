@@ -1,28 +1,29 @@
 <div class="marco">
   <img src="../../../assets/icon/Palacio_Duoc.jpg" alt="Palacio Duoc" class="fullscreen-image">
 
+  <!-- Correo ahora es solo un input sin ngModel ya que es un campo único para cada usuario -->
   <ion-item>
-    <ion-input type="text" [(ngModel)]="usuario.correo" label="Correo" labelPlacement="floating"></ion-input>
+    <ion-input type="text" [(ngModel)]="nuevoUsuario.correo" label="Correo" labelPlacement="floating"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input type="text" [(ngModel)]="usuario.nombre" label="Nombre" labelPlacement="floating"></ion-input>
+    <ion-input type="text" [(ngModel)]="nuevoUsuario.nombre" label="Nombre" labelPlacement="floating"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input type="text" [(ngModel)]="usuario.apellido" label="Apellidos" labelPlacement="floating"></ion-input>
+    <ion-input type="text" [(ngModel)]="nuevoUsuario.apellido" label="Apellidos" labelPlacement="floating"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input type="text" [(ngModel)]="usuario.preguntaSecreta" label="Pregunta secreta" labelPlacement="floating"></ion-input>
+    <ion-input type="text" [(ngModel)]="nuevoUsuario.preguntaSecreta" label="Pregunta secreta" labelPlacement="floating"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input type="text" [(ngModel)]="usuario.respuestaSecreta" label="Respuesta secreta" labelPlacement="floating"></ion-input>
+    <ion-input type="text" [(ngModel)]="nuevoUsuario.respuestaSecreta" label="Respuesta secreta" labelPlacement="floating"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input type="password" [(ngModel)]="usuario.password" label="Contraseña" labelPlacement="floating"></ion-input>
+    <ion-input type="password" [(ngModel)]="nuevoUsuario.password" label="Contraseña" labelPlacement="floating"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -31,8 +32,9 @@
 
   <br>
   <div class="centrar-boton">
-    <ion-button (click)="crearNuevoPerfil()"> 
-      Crear Cuenta 
+    <!-- Cambia el texto del botón y el método que se llama -->
+    <ion-button (click)="registrarUsuario()">
+      Registrarse
     </ion-button>
   </div>
 

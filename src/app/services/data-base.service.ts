@@ -56,19 +56,45 @@ export class DataBaseService {
     });
   }
   
+  // async crearUsuario(usuario: Usuario) {
+  //   const sql = 'INSERT INTO USUARIO (correo, password, nombre, apellido, preguntaSecreta, respuestaSecreta VALUES (?,?,?,?,?,?);';
+  // await this.db.run(sql, [usuario.correo, usuario.password, usuario.nombre, usuario.apellido, 
+  //   usuario.preguntaSecreta, usuario.respuestaSecreta]);  
+  //   await this.leerUsuarios();
+  // }
+
   async crearUsuario(usuario: Usuario) {
-    const sql = 'INSERT INTO USUARIO (correo, password, nombre, apellido, ' +
-    'preguntaSecreta, respuestaSecreta, rol) VALUES (?,?,?,?,?,?,?);';
-  await this.db.run(sql, [usuario.correo, usuario.password, usuario.nombre, usuario.apellido, 
-    usuario.preguntaSecreta, usuario.respuestaSecreta, usuario]);  
+    // Verificar si el correo ya existe
+    const usuarioExistente = await this.leerUsuario(usuario.correo);
+    if (usuarioExistente) {
+      // El correo ya existe, muestra un mensaje de error o toma la acción adecuada
+      console.error('El correo ya está registrado.');
+      // Puedes manejar el error aquí, retornar o lanzar una excepción, según tus necesidades
+      return;
+    }
+  
+    // El correo no existe, procede con la creación del usuario
+    const sql = 'INSERT INTO USUARIO (correo, password, nombre, apellido, preguntaSecreta, respuestaSecreta) VALUES (?,?,?,?,?,?);';
+    await this.db.run(sql, [
+      usuario.correo,
+      usuario.password,
+      usuario.nombre,
+      usuario.apellido,
+      usuario.preguntaSecreta,
+      usuario.respuestaSecreta
+    ]);
+  
+    // Actualiza la lista de usuarios
     await this.leerUsuarios();
   }
+  
 
+  
   async guardarUsuario(usuario: Usuario) {
     const sql = 'INSERT OR REPLACE INTO USUARIO (correo, password, nombre, apellido, ' +
-    'preguntaSecreta, respuestaSecreta, rol) VALUES (?,?,?,?,?,?,?);';
+    'preguntaSecreta, respuestaSecreta) VALUES (?,?,?,?,?,?);';
   await this.db.run(sql, [usuario.correo, usuario.password, usuario.nombre, usuario.apellido, 
-    usuario.preguntaSecreta, usuario.respuestaSecreta, usuario]);  
+    usuario.preguntaSecreta, usuario.respuestaSecreta]);  
     await this.leerUsuarios();
   }
 
@@ -79,6 +105,7 @@ export class DataBaseService {
 
   async leerUsuario(correo: string): Promise<Usuario | undefined> {
     const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO WHERE correo=?;', [correo])).values as Usuario[];
+
     return usuarios[0];
   }
   
@@ -93,15 +120,20 @@ export class DataBaseService {
     return usuarios[0];
   }
 
-  async listarUsuarios(): Promise<Usuario[]> {
-    try {
-      const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO;')).values as Usuario[];
-      console.log('Usuarios obtenidos:', usuarios);
-      return usuarios;
-    } catch (error) {
-      console.error('Error al obtener usuarios:', error);
-      throw error;  // Propaga el error para que pueda ser capturado en la llamada a esta función
-    }
+// En tu servicio o componente donde necesitas listar usuarios
+async listarUsuarios(): Promise<Usuario[]> {
+  try {
+    const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO;')).values as Usuario[];
+    return usuarios;
+  } catch (error) {
+    console.error('Error al cargar usuarios:', error);
+    throw error; // Puedes manejar el error aquí o lanzarlo para manejarlo en el componente
   }
+}
+
+async eliminarUsuario(usuario: Usuario) {
+  await this.db.run('DELETE FROM USUARIO WHERE correo=?', [usuario.correo]);
+  await this.leerUsuarios();
+}
 
 }

@@ -47,6 +47,8 @@
 
   <app-misdatos [hidden]="componente_actual !== 'misdatos'"></app-misdatos>
   
+  <app-admin *ngIf="isAdmin()" [hidden]="componente_actual !== 'admin'"></app-admin>
+
 </ion-content>
 
 <ion-footer>

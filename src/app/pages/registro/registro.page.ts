@@ -14,21 +14,20 @@ import { showAlertDUOC, showToast } from 'src/app/tools/message-routines';
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule]
 })
+// Cambia el nombre de la clase
 export class RegistroPage implements OnInit {
 
-  usuario = new Usuario();
+  // Cambia el nombre de la variable usuario a nuevoUsuario
+  nuevoUsuario = new Usuario();
   repeticionPassword = '';
 
   constructor(private authService: AuthService, private bd: DataBaseService) { }
 
   ngOnInit() {
-    this.authService.usuarioAutenticado.subscribe((usuario) => {
-      this.usuario = usuario? usuario : new Usuario();
-      this.repeticionPassword = usuario? usuario.password : '';
-    });
+    // Mantén esta parte si es necesaria para la inicialización
   }
 
-  validarCampo(nombreCampo:string, valor: string) {
+  validarCampo(nombreCampo: string, valor: string) {
     if (valor.trim() === '') {
       showAlertDUOC(`Debe ingresar un valor para el campo "${nombreCampo}".`);
       return false;
@@ -36,22 +35,33 @@ export class RegistroPage implements OnInit {
     return true;
   }
 
-  async crearNuevoPerfil() {
-    if (!this.validarCampo('nombre', this.usuario.nombre)) return;
-    if (!this.validarCampo('apellidos', this.usuario.apellido)) return;
-    if (!this.validarCampo('correo', this.usuario.correo)) return;
-    if (!this.validarCampo('pregunta secreta', this.usuario.preguntaSecreta)) return;
-    if (!this.validarCampo('respuesta secreta', this.usuario.respuestaSecreta)) return;
-    if (!this.validarCampo('contraseña', this.usuario.password)) return;
-    if (this.usuario.password !== this.repeticionPassword) {
-        showAlertDUOC(`Las contraseñas escritas deben ser iguales.`);
-        return;
+  async registrarUsuario() {
+    if (!this.validarCampo('nombre', this.nuevoUsuario.nombre)) return;
+    if (!this.validarCampo('apellidos', this.nuevoUsuario.apellido)) return;
+    if (!this.validarCampo('correo', this.nuevoUsuario.correo)) return;
+    if (!this.validarCampo('pregunta secreta', this.nuevoUsuario.preguntaSecreta)) return;
+    if (!this.validarCampo('respuesta secreta', this.nuevoUsuario.respuestaSecreta)) return;
+    if (!this.validarCampo('contraseña', this.nuevoUsuario.password)) return;
+    if (this.nuevoUsuario.password !== this.repeticionPassword) {
+      showAlertDUOC(`Las contraseñas escritas deben ser iguales.`);
+      return;
     }
-    // Guardar el nuevo usuario
-    await this.bd.crearUsuario(this.usuario);
-    this.authService.guardarUsuarioAutenticado(this.usuario);
-    showToast('Su perfil ha sido creado exitosamente');
+  
+    try {
+      await this.bd.crearUsuario(this.nuevoUsuario);
+      showToast('Registro exitoso. Inicia sesión con tus nuevos datos.');
+    } catch (error) {
+      // Verifica si el error es de tipo Error y contiene el mensaje de correo ya registrado
+      if (error instanceof Error && error.message.includes('El correo ya está registrado.')) {
+        showAlertDUOC('El correo ya está registrado. Por favor, elige otro correo.');
+      } else {
+        console.error('Error al registrar usuario:', error);
+        showAlertDUOC('Ocurrió un error al intentar registrarse. Por favor, inténtelo nuevamente.');
+      }
+    }
+    
+    
+    
   }
-
-
+  
 }
