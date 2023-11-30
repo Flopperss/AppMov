@@ -62,4 +62,10 @@ export class InicioPage implements OnInit, AfterViewInit {
       animation.play();
     }
   }
+
+  isAdmin(): boolean {
+    // Aquí implementa la lógica para verificar si el usuario es administrador o no
+    // Puedes usar el servicio AuthService o la lógica que ya tengas implementada
+    return this.authService.isAdmin();
+  }
 }

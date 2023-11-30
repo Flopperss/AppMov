@@ -13,12 +13,12 @@
     <ion-segment [(ngModel)]="componente_actual"  (ngModelChange)="cambiarComponente($event)">
     
       
-      <ion-segment-button value="qr">
-        <ion-label class = button-label>QR</ion-label>
+      <ion-segment-button value="qr" *ngIf="!isAdmin()">
+        <ion-label class="button-label">QR</ion-label>
       </ion-segment-button>
-
-      <ion-segment-button value="miclase">
-        <ion-label class = button-label>Mi clase</ion-label>
+      
+      <ion-segment-button value="miclase" *ngIf="!isAdmin()">
+        <ion-label class="button-label">Mi Clase</ion-label>
       </ion-segment-button>
 
       <ion-segment-button value="foro">
@@ -29,6 +29,9 @@
         <ion-label class = button-label>Mis datos</ion-label>
       </ion-segment-button>
 
+      <ion-segment-button value="admin" *ngIf="isAdmin()">
+        <ion-label class="button-label">admin</ion-label>
+      </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 </ion-header>

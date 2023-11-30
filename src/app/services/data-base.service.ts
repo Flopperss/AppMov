@@ -44,16 +44,31 @@ export class DataBaseService {
         if (!usuario) await this.guardarUsuario(Usuario.getUsuario('avalenzuela@duocuc.cl', 'qwer', 'Alberto', 'Valenzuela', 'Mi mejor amigo', 'juanito'));
         this.leerUsuario('cfuentes@duocuc.cl').then(async usuario => {
           if (!usuario) await this.guardarUsuario(Usuario.getUsuario('cfuentes@duocuc.cl', 'asdf', 'Carla', 'Fuentes', 'Dónde nació mamá', 'valparaiso'));
+          
         });
       });
     });
+  
+    // Agrega un usuario administrador si no existe
+    await this.leerUsuario('admin@duocuc.cl').then(async usuario => {
+      if (!usuario) { await this.guardarUsuario(Usuario.getUsuario('admin@duocuc.cl', 'admin', 'Admin', 'Usuario', 'Pregunta secreta', 'Respuesta secreta'));
+      }
+    });
+  }
+  
+  async crearUsuario(usuario: Usuario) {
+    const sql = 'INSERT INTO USUARIO (correo, password, nombre, apellido, ' +
+    'preguntaSecreta, respuestaSecreta, rol) VALUES (?,?,?,?,?,?,?);';
+  await this.db.run(sql, [usuario.correo, usuario.password, usuario.nombre, usuario.apellido, 
+    usuario.preguntaSecreta, usuario.respuestaSecreta, usuario]);  
+    await this.leerUsuarios();
   }
 
   async guardarUsuario(usuario: Usuario) {
     const sql = 'INSERT OR REPLACE INTO USUARIO (correo, password, nombre, apellido, ' +
-      'preguntaSecreta, respuestaSecreta) VALUES (?,?,?,?,?,?);';
-    await this.db.run(sql, [usuario.correo, usuario.password, usuario.nombre, usuario.apellido, 
-      usuario.preguntaSecreta, usuario.respuestaSecreta]);
+    'preguntaSecreta, respuestaSecreta, rol) VALUES (?,?,?,?,?,?,?);';
+  await this.db.run(sql, [usuario.correo, usuario.password, usuario.nombre, usuario.apellido, 
+    usuario.preguntaSecreta, usuario.respuestaSecreta, usuario]);  
     await this.leerUsuarios();
   }
 
@@ -76,6 +91,17 @@ export class DataBaseService {
     const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO WHERE correo=? AND password=?;',
       [correo, password])).values as Usuario[];
     return usuarios[0];
+  }
+
+  async listarUsuarios(): Promise<Usuario[]> {
+    try {
+      const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO;')).values as Usuario[];
+      console.log('Usuarios obtenidos:', usuarios);
+      return usuarios;
+    } catch (error) {
+      console.error('Error al obtener usuarios:', error);
+      throw error;  // Propaga el error para que pueda ser capturado en la llamada a esta función
+    }
   }
 
 }

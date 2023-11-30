@@ -8,16 +8,16 @@
     </ion-card-header>
 
     <ion-item class="ion-padding-horizontal">
-      <ion-input [(ngModel)]="publicacion.titulo" label="Título" labelPlacement="floating"></ion-input>
+      <ion-input id="titulo" [(ngModel)]="publicacion.titulo" label="Título" labelPlacement="floating"></ion-input>
     </ion-item>
 
     <ion-item class="ion-padding-horizontal">
-      <ion-textarea [(ngModel)]="publicacion.contenido" label="Contenido" labelPlacement="floating"></ion-textarea>
+      <ion-textarea id="contenido" [(ngModel)]="publicacion.contenido" label="Contenido" labelPlacement="floating"></ion-textarea>
     </ion-item>
 
     <div class="alinear-centro">
-      <ion-button (click)="limpiarPublicacion()">Limpiar</ion-button>
-      <ion-button (click)="guardarPublicacion()">Guardar</ion-button>
+      <ion-button id="limpiar" (click)="limpiarPublicacion()">Limpiar</ion-button>
+      <ion-button id="guardar" (click)="guardarPublicacion()">Guardar</ion-button>
     </div>
 
   </ion-card>

@@ -1,0 +1,12 @@
+<ion-content [fullscreen]="true">
+  <img src="../../../assets/icon/Palacio_Duoc.jpg" alt="Palacio Duoc" class="fullscreen-image">
+  <a #topOfPage href="#topOfPage"></a>
+  <ion-card>
+    <ion-list *ngIf="listaUsuarios && listaUsuarios.length > 0">
+      <ion-item *ngFor="let usuario of listaUsuarios">
+        <ion-label>{{ usuario.nombre }}</ion-label>
+        <p>{{ usuario.correo }}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

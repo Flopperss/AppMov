@@ -14,22 +14,23 @@
       
       <ion-card-content>
         <ion-item>
-          <ion-input name="correo" label="Correo" labelPlacement="floating" type="text" placeholder="Ingrese su correo" [(ngModel)]="correo"></ion-input>
+          <ion-input id="correo" name="correo" label="Correo" labelPlacement="floating" type="text" placeholder="Ingrese su correo" [(ngModel)]="correo"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input name="password" label="Contraseña" labelPlacement="floating" type="password" placeholder="Ingrese su contraseña" [(ngModel)]="password"></ion-input>
+          <ion-input id="password" name="password" label="Contraseña" labelPlacement="floating" type="password" placeholder="Ingrese su contraseña" [(ngModel)]="password"></ion-input>
         </ion-item>
         <ion-row>
           <ion-col size="12">
             <ion-button shape="block" (click)="ingresar()">Ingresar</ion-button>
           </ion-col>
-          
+          <ion-col size="12">
+            <ion-button shape="block" (click)="registro()">Crear Usuario</ion-button>
+          </ion-col>
+          <ion-col size="12">
+            <ion-button shape="block" (click)="recuperarContrasena()">Recuperar Contraseña</ion-button>
+          </ion-col>
         </ion-row>
-        <ion-label class="recuperar-contrasena">
-          <ion-button shape="block" (click)="recuperarContrasena()">Recuperar Contraseña</ion-button>
-        </ion-label>
       </ion-card-content>
     </ion-card>
-    
   </div>
 </ion-content>

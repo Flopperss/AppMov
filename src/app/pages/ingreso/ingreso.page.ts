@@ -35,4 +35,9 @@ export class IngresoPage implements OnInit {
     // Utiliza el servicio de enrutamiento para redirigir a otra página
     this.router.navigate(['correo']);
   }
+
+  registro() {
+    // Utiliza el servicio de enrutamiento para redirigir a otra página
+    this.router.navigate(['registro']);
+  }
 }

@@ -10,6 +10,7 @@ import { showToast } from '../tools/message-routines';
   providedIn: 'root'
 })
 export class AuthService {
+  private listaUsuarios: Usuario[] = [];
 
   keyUsuario = 'USUARIO_AUTENTICADO';
   usuarioAutenticado = new BehaviorSubject<Usuario | null>(null);
@@ -17,11 +18,17 @@ export class AuthService {
 
   constructor(private router: Router, private bd: DataBaseService, private storage: Storage) { 
     this.inicializarAutenticacion();
+    this.obtenerListaUsuarios();
+    
   }
 
+  
+
+  
   async inicializarAutenticacion() {
     await this.storage.create();
   }
+  
 
   async isAuthenticated(): Promise<boolean> {
     return await this.leerUsuarioAutenticado().then(usuario => {
@@ -44,8 +51,24 @@ export class AuthService {
     this.storage.remove(this.keyUsuario);
   }
 
+  obtenerListaUsuarios(): Usuario[] {
+    return this.listaUsuarios;
+  }
+  
+
+  // Nueva función para verificar si el usuario es un administrador
+  isAdmin(): boolean {
+    const usuario = this.usuarioAutenticado.value;
+    const isAdmin = usuario !== null && usuario.correo === 'admin@duocuc.cl';
+    console.log('isAdmin:', isAdmin);
+    return isAdmin;
+  }
+  
+  
+
+
   async login(correo: string, password: string) {
-    await this.storage.get(this.keyUsuario).then( async (usuarioAutenticado) => {
+    await this.storage.get(this.keyUsuario).then(async (usuarioAutenticado) => {
       if (usuarioAutenticado) {
         this.usuarioAutenticado.next(usuarioAutenticado);
         this.primerInicioSesion.next(false);
@@ -61,10 +84,15 @@ export class AuthService {
             showToast(`El correo o la password son incorrectos`);
             this.router.navigate(['ingreso']);
           }
-        })
+        });
       }
-    })
+    });
   }
+  
+  
+  
+
+
 
   async logout() {
     this.leerUsuarioAutenticado().then((usuario) => {

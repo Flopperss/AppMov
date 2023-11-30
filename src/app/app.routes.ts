@@ -34,4 +34,8 @@ export const routes: Routes = [
     path: 'incorrecto',
     loadComponent: () => import('./pages/incorrecto/incorrecto.page').then( m => m.IncorrectoPage)
   },
+  {
+    path: 'registro',
+    loadComponent: () => import('./pages/registro/registro.page').then( m => m.RegistroPage)
+  },
 ];
