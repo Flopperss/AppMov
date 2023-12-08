@@ -1,0 +1,208 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #4285f4; /* Color de fondo del navbar */
+  color: #ffffff; /* Color del texto del navbar */
+  padding: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 40px; /* Ajusta la altura máxima del logo según tus necesidades */
+}
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar li {
+  margin-right: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #ffffff; /* Color de los enlaces en el navbar */
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease; /* Efecto de transición en el color del texto */
+}
+
+.navbar a:hover {
+  color: #d3d3d3; /* Cambia el color del texto al pasar el ratón por encima */
+}
+
+#tipo-navegador {
+  position: absolute;
+  top: 10%; /* Puedes ajustar la distancia vertical según tus preferencias */
+  left: 50%;
+  transform: translateX(-50%);
+  /* Otros estilos específicos para #tipo-navegador si es necesario */
+}
+
+#app-title {
+  position: absolute;
+  top: 20%; /* Puedes ajustar la distancia vertical según tus preferencias */
+  left: 50%;
+  transform: translateX(-50%);
+  /* Otros estilos específicos para #app-title si es necesario */
+}
+
+#app-title h1 {
+  font-size: 2em; /* Puedes ajustar el tamaño de la fuente según tus preferencias */
+}
+
+#qr-container {
+  position: absolute;
+  top: 70%; /* Puedes ajustar la distancia vertical según tus preferencias */
+  left: 50%;
+  transform: translateX(-50%);
+  /* Otros estilos específicos para #qr-container si es necesario */
+}
+
+#qr-container .qr {
+  width: 200px; /* Ancho del código QR, ajusta según sea necesario */
+}
+
+#screenshots-container {
+    text-align: center;
+    margin-top: 50px; /* Ajusta el margen superior según sea necesario para separar las imágenes */
+    padding: 20px;
+    background-color: #fff;
+}
+
+.screenshot {
+    display: inline-block;
+    margin: 0 15px 20px;
+}
+
+.screenshot img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+  
+
+#tipo-navegador,
+#app-title {
+  margin-bottom: 20px; /* Ajusta la separación inferior de estas secciones según sea necesario */
+}
+
+
+
+#app-description {
+  max-width: 80%; /* Ajusta el ancho máximo del contenedor según tus necesidades */
+  margin: 20px auto; /* Ajusta el margen según tus necesidades */
+}
+
+#app-description h2 {
+  font-size: 24px; /* Ajusta el tamaño del título según tus necesidades */
+}
+
+#app-description p {
+  font-size: 16px; /* Ajusta el tamaño del texto según tus necesidades */
+}
+
+
+#install-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#install-link {
+  text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+#install-button {
+  background-color: #4caf50; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none;
+  padding: 10px 20px; /* Ajusta el relleno del botón según tus necesidades */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px; /* Ajusta el radio del borde según tus necesidades */
+}
+
+#install-button:hover {
+  background-color: #45a049; /* Cambia el color de fondo al pasar el ratón por encima */
+}
+
+/* Estilos generales que se aplicarán a todas las pantallas */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para pantallas más pequeñas (hasta 768px) */
+@media only screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-toggler {
+    order: -1; /* Mover el botón de la hamburguesa arriba */
+  }
+
+  .navbar-nav {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    text-align: center;
+    margin-top: 10px; /* Ajustar el margen según sea necesario */
+  }
+
+  .navbar li {
+    margin: 0;
+  }
+
+  #app-title h1 {
+    font-size: 1.5em; /* Reducir el tamaño del título */
+  }
+
+  #app-description h2 {
+    font-size: 20px; /* Reducir el tamaño del subtítulo */
+  }
+
+  #app-description p {
+    font-size: 14px; /* Reducir el tamaño del texto */
+  }
+
+  .screenshot {
+    width: 100%; /* Hacer que las capturas de pantalla ocupen todo el ancho */
+    margin-bottom: 20px; /* Ajustar el margen según sea necesario */
+  }
+
+  #install-container {
+    margin-top: 20px; /* Ajustar el margen según sea necesario */
+  }
+
+  #install-button {
+    font-size: 16px; /* Ajustar el tamaño del botón */
+  }
+
+  /* Ajustes para la imagen del navbar y el contenedor tipo-navegador */
+  .navbar-brand img {
+    max-height: 30px; /* Ajusta la altura máxima de la imagen del navbar en dispositivos móviles */
+  }
+
+  #tipo-navegador {
+    top: 10%; /* Ajustar la distancia vertical en dispositivos móviles */
+  }
+}
+
