@@ -21,6 +21,15 @@ npm install jsqr
 Instalar paquetes npm
 npm install
 
+Comando para instalar flask
+pip install flask
+
+Compartir internet del celular y cambiar la ip del promo.py 
+para esto ver la ipv4 de la red ya conectado a la red del celular desde el pc
+
+Ejecutar py promo.py para pagina promocional
+
+
 En este proyecto para ejecutar el foro debemos tener instalado el json server (nose si era necesario el comando para ejecutar json server) 
 Bueno despues de tener esto abrimos una segunda terminal (en la primera esta el server local) debemos ejecutar archivo s y seleccionar la opcion 13
 Luego de esto deberia funcionar el foro 
