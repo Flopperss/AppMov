@@ -77,3 +77,9 @@
   margin: -10px auto; /* Centra verticalmente y agrega espacio en la parte superior e inferior */
   max-width: 29%; /* Limita el ancho al 80% del contenedor padre */
 }
+
+.larger-image {
+  width: 100%; /* Ajusta el ancho según tus necesidades */
+  max-width: 500px; /* Establece un ancho máximo si es necesario */
+  height: auto; /* Mantiene la proporción original */
+}

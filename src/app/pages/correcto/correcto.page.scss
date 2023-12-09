@@ -93,3 +93,9 @@
   justify-content: center;
   height: 100%;
 }
+
+.larger-image {
+  width: 100%; /* Ajusta el ancho según tus necesidades */
+  max-width: 500px; /* Establece un ancho máximo si es necesario */
+  height: auto; /* Mantiene la proporción original */
+}

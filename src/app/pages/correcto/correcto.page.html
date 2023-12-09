@@ -11,13 +11,17 @@
     <div class="message">
       <p class="password">La contraseña es: {{ usuario.password }}</p>
     </div>
-    </ion-card-content>
-  <div class="image-container">
-    <img src="../../../assets/icon/Joven_Pulgar_Arriva.jpg" alt="Imagen centrada" class="centered-image">
-  </div>
+  </ion-card-content> 
 
-  <ion-label class="login-link">
-    <ion-label class="recuperar-contrasena"></ion-label>
-        <ion-button shape="block" (click)="volver()">Volver</ion-button>
-  </ion-label>
+  <ion-row class="image-container">
+    <ion-col size="12" size-md="6" offset-md="3" class="ion-text-center">
+      <img src="../../../assets/icon/Joven_Pulgar_Arriva.jpg" alt="Imagen centrada" class="centered-image larger-image">
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-text-center">
+    <ion-col size="12" size-md="6" offset-md="3">
+      <ion-button shape="block" (click)="volver()">Volver</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

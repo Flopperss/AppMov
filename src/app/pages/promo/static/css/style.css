@@ -65,9 +65,8 @@ nav {
 
 #qr-container {
   position: absolute;
-  top: 70%; /* Puedes ajustar la distancia vertical según tus preferencias */
-  left: 50%;
-  transform: translateX(-50%);
+  top: 2400px; /* Puedes ajustar la distancia vertical según tus preferencias */
+  left: 43%;
   /* Otros estilos específicos para #qr-container si es necesario */
 }
 
