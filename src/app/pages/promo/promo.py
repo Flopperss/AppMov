@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect
 
-ip_servidor = "192.168.1.2"
+ip_servidor = "192.168.217.84"
 url_servidor = "http://" + ip_servidor + ":5000"
 
 app = Flask(__name__)
